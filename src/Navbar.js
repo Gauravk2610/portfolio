@@ -37,7 +37,7 @@ const menuList = [
 function Navbar() {
 
     const [active, setActive] = useState('Home')
-
+    const [show, setShow] = useState(false)
     const navUpdate = () => {
         let current = ""
         const sections = document.querySelectorAll('section')
@@ -64,12 +64,16 @@ function Navbar() {
     }, [])
 
     return (
-        <Container>
+        <>    
+        <NavbarSpace active={show} />
+        <MenuButton onClick={()=>setShow(true)} active={show}>Menu <img src="menusmall.png" alt="menu" /></MenuButton>
+        <Container active={show} >
             <Main>
+                <Cross onClick={()=>setShow(false)} src='cross.png' />
                 <UserProfile>
-                    <Avatar src='https://images.jpost.com/image/upload/f_auto,fl_lossy/t_Article2016_ControlFaceDetect/390855'/>
-                    <h2>Anonymous</h2>
-                    <p>Robotics Engineer in Mumbai</p>
+                    <Avatar src='/me.jpeg'/>
+                    <h2>Rahul Doshi</h2>
+                    <p>Software Engineer in Mumbai</p>
                 </UserProfile>
                 <Menu>
                     { menuList.map(( list, index ) => {
@@ -77,7 +81,10 @@ function Navbar() {
                             <Content 
                                 key={index}
                                 active={active===list.title}
-                                onClick={() => {setActive(list.title)}}
+                                onClick={() => {
+                                    setActive(list.title)
+                                    setShow(false)
+                                }}
                             >
                                 {list.icon}
                                 <a href={`#${list.title}`}><p>{list.title}</p></a>
@@ -87,11 +94,22 @@ function Navbar() {
                 </Menu>
             </Main>
         </Container>
+        </>
     )
 }
 
 export default Navbar
 
+const NavbarSpace = styled.div`
+  width: 18%;
+  flex: 0.2;
+  min-width: 300px;
+  @media(max-width: 950px) {
+        flex: 0;
+        min-width: 0;
+        width: ${props => props.active ? '100%': '0'};
+  }
+`
 const Container = styled.div`
     flex: 0.2;
     background-color: black;
@@ -100,17 +118,66 @@ const Container = styled.div`
     width: 20%;
     overflow-y: scroll;   
     position: fixed;    
+    z-index: 100;
     height: 100%;
     ::-webkit-scrollbar {
         display: none;
     }
+    @media(max-width: 950px) {
+        /* display: none; */
+        min-width: ${props => props.active ? '100%' : '100%'};
+        width: ${props => props.active ? '100%' : '100%'};
+        flex: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100vh;
+        position: fixed;
+        background-color: black;
+        z-index: 10;
+        transform: ${props => props.active ? 'translateX(0%)': 'translateX(100%)'};
+        transition: transform 0.4s ease-in-out;
+    }
+`
 
+const MenuButton = styled.div`
+    position: fixed;
+    z-index: 100;
+    cursor: pointer;
+    top: 16px;
+    width: 120px;
+    height: 50px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: rgb(0, 0, 0, 0.9);
+    box-shadow: ${props => props.active ? 'none': '0px 0px 5px 2px'};
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    justify-content: space-evenly;
+    color: white;
+    transform: ${props => props.active ? 'translateX(-100%)': 'translateX(0%)'};
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+`
+
+const Cross = styled.img`
+    display: none;
+    @media(max-width: 950px) {
+        display: flex;
+        position: absolute;
+        right: 32px;
+        top: -10px;
+        width: 36px;
+        cursor: pointer;
+    }
 `
 
 const Main = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 10%;
+    position: relative;
 `
 
 const UserProfile = styled.div`
