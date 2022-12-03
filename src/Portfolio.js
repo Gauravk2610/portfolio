@@ -310,7 +310,8 @@ const Home = styled.section`
     display: flex;
     min-height: 100vh;
     color: black;
-    background-image: url('https://preview.colorlib.com/theme/jackson/images/ximg_bg_2.jpg.pagespeed.ic.xEiGUO7p7Q.webp');
+    background: whitesmoke;
+    /* background-image: url('https://preview.colorlib.com/theme/jackson/images/ximg_bg_2.jpg.pagespeed.ic.xEiGUO7p7Q.webp'); */
     background-repeat: no-repeat;
     background-size: cover;
     // background-attachment: fixed;
