@@ -7,7 +7,8 @@ import {
   Person,
   Phonelink,
   School,
-  MenuBook
+  MenuBook,
+  EmojiEvents
 } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -37,10 +38,10 @@ const menuList = [
     title: "Work",
     icon: <Phonelink />,
   },
-  {
-    title: "Contact",
-    icon: <Contacts />,
-  },
+  // {
+  //   title: "Certification",
+  //   icon: <EmojiEvents />,
+  // },
 ];
 
 function Navbar() {
@@ -82,7 +83,26 @@ function Navbar() {
           <UserProfile>
             <Avatar src="/me.jpeg" />
             <h2>Rahul Doshi</h2>
-            <p>Software Engineer in Mumbai</p>
+            <p>Software Engineer</p>
+            <div style={{
+              display: 'flex',
+              margin: '10px 0px',
+            }}>
+              <a href="https://leetcode.com/rahuldoshi34/"
+              target={'_blank'}
+              noreferrer="true"
+              >
+                <img 
+                height={30}
+                width={30}
+                style={{
+                  background: 'white',
+                  borderRadius: '50%',
+                }}
+                src="https://leetcode.com/static/images/LeetCode_logo.png"
+                />
+              </a>
+            </div>
           </UserProfile>
           <Menu>
             {menuList.map((list, index) => {
@@ -102,6 +122,14 @@ function Navbar() {
                 </Content>
               );
             })}
+            <Content>
+                <EmojiEvents />
+              <a 
+              href={"https://drive.google.com/drive/folders/1AyKl3ONUbQsClh2Z3pLWP9VuDn7gfU6m?usp=sharing" }
+              target={'_blank'}>
+                <p>Certifications</p>
+              </a>
+            </Content>
             <Content>
                 <MenuBook />
               <a 
