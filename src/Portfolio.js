@@ -24,6 +24,10 @@ const skillList = [
     percentage: 90,
   },
   {
+    title: "C++",
+    percentage: 90,
+  },
+  {
     title: "Node Js",
     percentage: 90,
   },
@@ -117,13 +121,15 @@ const projectList = [
     title: "KYEASY",
     description: "KYEASY: Blockchain based video kyc platform",
     techStack: ["Node Js", "Hyperledger Fabric", "web socket", "nodemailer"],
-    ytblink: "shorturl.at/iHOP6",
+    link: "https://drive.google.com/file/d/1Dy37M8xc0PD40elCHqUHtWdg2v42AquW/view",
+    linkName: "KYEASY Video"
   },
   {
     title: "Healthchain",
     description: "Healthchain :  blockchain based EHR system",
     techStack: ["Bigchaindb", "Node Js", "Express", "twillio"],
     ytblink: "https://youtu.be/icc24YsjyvY",
+    linkTitle: "Healthchain Video"
   },
 ];
 
@@ -238,6 +244,18 @@ function Portfolio() {
                 <img src="/acoe.jfif" alt="Atharva College Of Engineering" />
                 <div className="education__card">
                   <div className="college__name">
+                    Stevens Institute of Technology
+                  </div>
+                  <h4 className="program__enrolled">
+                    Master's of science in computer science
+                  </h4>
+                  <h4 className="program__status">2023-2024</h4>
+                </div>
+              </EducationCard>
+              <EducationCard>
+                <img src="/acoe.jfif" alt="Atharva College Of Engineering" />
+                <div className="education__card">
+                  <div className="college__name">
                     Atharva College Of Engineering
                   </div>
                   <h4 className="program__enrolled">
@@ -309,7 +327,7 @@ function Portfolio() {
                     <LinkWrap>
                       <YouTube fontSize={"24px"} />
                       <a href={project.ytblink} target="blank">
-                        {project.ytblink}
+                        {project?.linkTitle || project?.ytblink}
                       </a>
                     </LinkWrap>
                   )}
@@ -344,11 +362,14 @@ const Home = styled.section`
   display: flex;
   min-height: 100vh;
   color: black;
-  background: whitesmoke;
   /* background-image: url('https://preview.colorlib.com/theme/jackson/images/ximg_bg_2.jpg.pagespeed.ic.xEiGUO7p7Q.webp'); */
   background-repeat: no-repeat;
   background-size: cover;
-  // background-attachment: fixed;
+  @media (min-width: 640px) {
+        background-image: url(/coding.png);
+  }
+  background: right center / 640px no-repeat whitesmoke;
+}
 `;
 
 const Text = styled.div`

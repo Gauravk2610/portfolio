@@ -87,6 +87,7 @@ function Navbar() {
             <div style={{
               display: 'flex',
               margin: '10px 0px',
+              gap: '12px'
             }}>
               <a href="https://leetcode.com/rahuldoshi34/"
               target={'_blank'}
@@ -100,6 +101,29 @@ function Navbar() {
                   borderRadius: '50%',
                 }}
                 src="https://leetcode.com/static/images/LeetCode_logo.png"
+                />
+              </a>
+              <a href="mailto:rahuldoshi34@gmail.com"
+              target={'_blank'}
+              noreferrer="true"
+              >
+                <img 
+                height={30}
+                width={30}
+                src="gmail.png"
+                />
+              </a>
+              <a href="https://www.linkedin.com/in/doshirahul04/"
+              target={'_blank'}
+              noreferrer="true"
+              >
+                <img 
+                height={35}
+                width={35}
+                style={{
+                  borderRadius: '50%',
+                }}
+                src="https://itcnet.gr/wp-content/uploads/2020/09/Linkedin-logo-on-transparent-Background-PNG-.png"
                 />
               </a>
             </div>
@@ -133,7 +157,7 @@ function Navbar() {
             <Content>
                 <MenuBook />
               <a 
-              href={"https://drive.google.com/file/d/14lqoZK48_LSrcSEs0gPFqSgv_zw0_nFs/view?usp=sharing" }
+              href={"https://drive.google.com/drive/folders/1E0kDKo7Oa_-X4-TUg23ggPaBxkI5alra" }
               target={'_blank'}>
                 <p>Resume</p>
               </a>
